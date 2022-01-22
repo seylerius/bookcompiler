@@ -1,0 +1,339 @@
+body {
+    hyphens: auto;
+    background-color: black;
+    color: white;
+    margin: 0;
+}
+
+body iframe { display: none !important; }
+
+@media print {
+    * {
+        color: #000 !important;
+        text-shadow: none !important;
+        background: transparent !important;
+        -webkit-box-shadow: none !important;
+        box-shadow: none !important;
+    }
+
+    footer {
+        display: none;
+    }
+
+    .drawer, #drawerBtn {
+        display: none;
+    }
+}
+
+html ::-webkit-scrollbar {     
+    background-color: transparent;
+    width: 0.6rem;
+}
+
+html ::-webkit-scrollbar-thumb:window-inactive,
+html ::-webkit-scrollbar-thumb {
+    background:  #555;
+    border-radius: 0.25rem;
+}
+
+.body-main {
+    margin: auto;
+    max-width: 40em;
+}
+
+h1, h2 {
+    text-align: center;
+    margin-top: 2em;
+    color: white;
+    line-height: 150%;
+    text-shadow: 0 0 0.5rem white;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.center-box {
+    position: relative;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+
+header.chapter {
+    padding-top: 1px; /* stomps top-element margins for us */
+    width: 100%;
+}
+
+header.chapter h1 {
+    margin: 1rem;
+    border: none;
+    font-size: 10vw;
+    letter-spacing: 0.5rem;
+    font-family: poseidon, PoseiAOE;
+}
+
+header.chapter img {
+    width: 100vw;
+}    
+
+article {
+    padding: 1.5rem;
+    max-width: 40rem;
+    margin: auto;
+}
+
+article.chapter h1 {
+    text-align: left;
+    border: none;
+    font-size: inherit;
+}
+
+footer.chapter {
+    width: 100%;
+    padding: 1rem;
+    box-sizing: border-box;
+}
+
+footer.chapter a {
+    font-weight: bold;
+    margin-bottom: 1rem;
+    text-shadow: 0 0 0.5rem white;
+}
+
+footer.chapter a.prev:before {
+    content: '◀';
+    margin-right: 0.5rem;
+}
+
+footer.chapter a.next, footer.chapter a.continued {
+    text-align: right;
+    float: right;
+}
+
+footer.chapter a.next:not(.continued):after {
+    content: '▶';
+    margin-left: 0.5rem;
+}
+
+a {
+    color: inherit;
+}
+
+#wtf a {
+    text-decoration: underline;
+}
+
+/**** contents page ****/
+
+.chapters {
+    list-style-type: none;
+    padding: 0;
+}
+
+.chapters > li {    
+    white-space: nowrap;
+}
+
+.chapters > li > a {
+    padding: 0.5em;
+    padding-left: 1em;
+    display: inline-block;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.chapters > li.book > a {
+    padding-left: 0;
+    font-weight: bold;
+}
+
+.chapters a:hover {
+    text-decoration: underline;
+}
+
+/**** Nav ****/
+
+.drawer {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    box-sizing: border-box;
+    overflow-y: auto;
+    background: rgba(0, 0, 0, 0.9);
+    padding: 1rem;
+    transition: all 0.3s;
+    box-shadow: 0 0 0.5rem white;
+    font-size: 1.25rem;
+    max-width: 100vw;
+}
+
+.drawer label[for=drawerState] {
+    font-weight: bold;
+    float: right;
+    padding: 1rem;
+}
+
+.drawer .parts {
+}
+
+.drawer label {
+    padding: 0.5rem;
+}
+
+#drawerBtn {
+   position: fixed;
+    top: 0rem;
+    left: -1.5rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    opacity: 0.3;
+    box-sizing: border-box;
+    transition: all 0.3s;
+    color: rgba(0, 0, 0, 0);
+    background-repeat: no-repeat;
+    background-size: 1.5rem;
+    background-position: 1rem 1rem; 
+    /* white navicon */
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHMAAABkCAMAAACCTv/3AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAAZQTFRF////5ubmueBsSwAAAAJ0Uk5T/wDltzBKAAAAPklEQVR42uzYQQ0AAAgDseHfNC4IyVoD912WAACUm3uampqampqamq+aAAD+IVtTU1NTU1NT0z8EAFBsBRgAX+kR+Qam138AAAAASUVORK5CYII=);
+}
+
+#drawerBtn:hover {
+    opacity: 1.0;
+}
+
+@media (pointer: coarse) {
+    #drawerBtn {
+        top: 0;
+        left: 0;
+        width: 3.5rem;
+        height: 3.5rem;
+    }
+}
+
+#drawerState:checked ~ #drawerBtn {
+    left: 320px;
+    background: none;
+    opacity: 0.3;
+    height: 100vh;
+    width: 1000px;
+}
+
+#drawerState:checked ~ #drawerBtn:hover {
+    opacity: 0.3;
+}
+
+#drawerState:not(:checked) ~ .drawer {
+    left: -150%;
+    box-shadow: none;
+}
+
+label {
+    cursor: pointer;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.drawer hr {
+    margin-top: 1rem;
+}
+
+.pref:before {
+    display: inline-block;
+    width: 1em;
+}
+
+.prefCB {
+    display: none;
+}
+
+#fontState:checked ~ * label[for=fontState]:before,
+#printState:checked ~ * label[for=printState]:before,
+#glowState:checked ~ * label[for=glowState]:before,
+#annotate-voices:checked ~ * label[for=annotate-voices]:before
+{
+    content: "✓ ";
+}
+
+#fontState:not(:checked) ~ * label[for=fontState]:before,
+#printState:not(:checked) ~ * label[for=printState]:before,
+#glowState:not(:checked) ~ * label[for=glowState]:before,
+#annotate-voices:not(:checked) ~ * label[for=annotate-voices]:before
+{
+    content: "  ";
+}
+
+.annotate-voices [data-voice-id]:before {
+    background: #333;
+}
+
+img.card {
+    max-width: 10rem;
+    max-height: 10rem;
+}
+
+body:not(.fontState) [data-voice-id] {
+    font-family: serif;
+    font-size: initial;
+}
+
+.printState [data-voice-id], body:not(.glowState) [data-voice-id] {
+    text-shadow: none;
+}
+
+body.printState, .printState *:not(#drawerBtn), .printState [data-voice-id] {
+    background-color: white !important;
+    color: black !important;
+}
+
+.printState .drawer {
+    box-shadow: 0 0 0.5rem black;
+}
+
+article.chapter h1:first-child {
+  font-weight: bold;
+  font-size: 400%;
+  margin-bottom: 1rem;
+  text-align: center;
+  margin-top: 0;
+}
+
+article.chapter img {
+  max-width: 100%;
+}
+
+article {
+  max-width: 50em !important;
+}
+
+h1.title {
+    display: block !important;
+    font-weight: normal;
+    font-size: 3vw;
+    line-height: 3.25em;
+    text-align: right !important;
+    text-shadow: 0 0 0.5rem #f0f;
+    margin-top: 3rem !important;
+    margin-bottom: 3rem !important;
+}
+
+h2 {
+  text-shadow: 0 0 0.5rem white;
+}
+
+.copyright {
+    font-size: xx-small;
+    font-weight: normal !important;    
+    opacity: 0.5;
+}
+
+
+@media (max-width: 640px) {
+    article {
+        padding: 0.75rem;
+    }
+}

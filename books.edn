@@ -1,0 +1,3 @@
+{:heartformer-resources "~/.config/HeartFormer/heartformer-resources/"
+ :book-sources {:determined "~/src/Heartforming/Determined"}
+ :book-releases}
