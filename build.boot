@@ -3,7 +3,8 @@
  :resource-paths #{"content"}
  :dependencies '[[perun "0.4.3-SNAPSHOT" :scope "test"]
                  [hiccup "1.0.5" :exclusions [org.clojure/clojure]]
-                 [garden "1.3.10" :exclusions [org.clojure/clojure]]])
+                 [garden "1.3.10" :exclusions [org.clojure/clojure]]
+                 [clj-commons/clj-yaml "0.7.0"]])
 
 (require '[io.perun :as perun])
 
