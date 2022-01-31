@@ -1,4 +1,4 @@
-(ns bookcompiler.voice
+(ns inkstained.bookcompiler.voice
   (:require [hiccup.page :as hp]
             [boot.core :as boot :refer [deftask]]
             [garden.core :as g :refer [css]]

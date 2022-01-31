@@ -1,13 +1,31 @@
-(ns bookcompiler.core
+(ns inkstained.bookcompiler
   (:require [hiccup.page :as hp]
-            [boot.core :as boot :refer [deftask]]
             [clojure.java.io :as io]
-            [clojure.string :as s]))
+            [clojure.string :as s]
+            [stasis.core :as stasis]
+            [clojure.edn :as edn])
+  (:gen-class))
 
-;; (defn page [data]
-;;   (hp/html5
-;;    [:div {:style "max-width: 900px; margin: 40px auto;"}
-;;     (-> data :entry :content)]))
+(defn get-test-books []
+  (let [config-file "/home/seylerius/.config/bookcompiler/books.edn"]
+    (edn/read-string (slurp config-file))))
+
+(defn render-pages []
+  (let [config (get-test-books)
+        {:keys [title-short
+                title-long
+                sources]
+         :as book} (first (config :book-releases))
+        ]
+    (merge {"/" (hp/html5 [:head
+                           [:meta {:charset "utf-8"}]
+                           [:meta {:name "viewport"
+                                   :content (str "width=device-width, "
+                                                 "initial-scale=1")}]
+                           [:title title-short]]
+                          [:body [:h1 title-long]])})))
+
+(def dev-server (stasis/serve-pages render-pages))
 
 (defn pref-checkbox
   "Preference checkbox"
